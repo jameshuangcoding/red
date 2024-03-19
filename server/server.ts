@@ -6,20 +6,27 @@ import express, {
   Response,
 } from 'express';
 import path from 'path';
+import { taskRouter } from './routes/task';
 
 const app: Express = express();
 
-const PORT = 3000;
+const PORT: number = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// displaying bundled dist folder content
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
+// routes
+app.use('/api/task', taskRouter);
+
+// catch all
 app.use('*', (req: Request, res: Response) => {
   res.status(404).send('Page Not Found');
 });
 
+// global error handler
 app.use(
   (
     err: ErrorRequestHandler,
