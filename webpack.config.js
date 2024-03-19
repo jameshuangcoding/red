@@ -58,12 +58,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        include: path.resolve(__dirname, 'client'),
         exclude: /node_modules/,
         use: [
           // creates style nodes from JS strings - ORDER MATTERS!
           // these loaders are used in backwards order
           'style-loader',
           'css-loader',
+          'postcss-loader',
         ],
       },
     ],
