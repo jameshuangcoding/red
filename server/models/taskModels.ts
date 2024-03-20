@@ -1,8 +1,7 @@
 import { Schema, model, connect } from 'mongoose';
+import 'dotenv/config';
 
-const MONGO_URI =
-  'mongodb+srv://jhuang4647:tkdnSiVrpDWDurmx@red.c3ytmlf.mongodb.net/';
-
+const MONGO_URI: string = (process.env['MONGO_URI'] as string);
 connect(MONGO_URI);
 
 interface Task {
